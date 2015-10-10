@@ -40,7 +40,8 @@
 #import "DVIPDFTask.h"
 #import "BDSKTask.h"
 
-#define DEFAULT_PATH @"/usr/texbin/dvipdfmx"
+// !!! not correct for TL 2014 on OS X 10.11 and later; read path from TLU?
+#define DEFAULT_PATH ((floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber10_10) ? @"/usr/texbin/dvipdfmx" : @"/Library/TeX/texbin/dvipdfmx")
 #define PREF_KEY "DvipdfmxPathKey"
 
 static NSString *__CopyDviPDFmxPathForBundleID(CFStringRef bundleIdentifier)
